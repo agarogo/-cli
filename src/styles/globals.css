@@ -6,8 +6,10 @@
 }
 
 body {
-  background-color: white;
+  background-color: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .mon {
@@ -16,32 +18,77 @@ body {
   font-style: normal;
 }
 
+/* Адаптивные стили для текста и элементов */
+@media (max-width: 768px) {
+  .mon {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.25rem;
+    /* Уменьшенный размер для планшетов */
+  }
+}
+
 @media (max-width: 640px) {
   .mon {
     font-family: "Montserrat Alternates", sans-serif;
     font-weight: 500;
     font-style: normal;
-    font-size: 24px !important;
+    font-size: 1rem;
+    /* Еще меньший размер для мобильных */
   }
+}
+
+/* Фоновые изображения */
+.res,
+.res2,
+.res3 {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .res {
   background-image: url(image.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .res2 {
   background-image: url(grop.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .res3 {
   background-image: url(class.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+/* Упрощение фонов для мобильных устройств */
+@media (max-width: 640px) {
+
+  .res,
+  .res2,
+  .res3 {
+    background-image: none;
+    /* Убираем фоновые изображения на маленьких экранах */
+    background-color: #f5f5f5;
+    /* Заменяем на сплошной цвет */
+  }
+}
+
+/* Общие адаптивные стили для контейнеров */
+.container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Адаптивные отступы и размеры шрифтов */
+h1,
+h2,
+h3 {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-bold;
+}
+
+p {
+  @apply text-base sm:text-lg lg:text-xl;
+}
+
+button {
+  @apply text-sm sm:text-base lg:text-lg;
 }

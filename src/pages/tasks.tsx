@@ -44,33 +44,33 @@ export default function TasksPage() {
   };
 
   return (
-    <div className="p-6 w-[60%] mx-auto mt-10">
-      <h1 className="text-3xl font-bold mb-4">Недавно пройденные</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    <div className="container p-4 sm:p-6 lg:p-8 mt-6 sm:mt-8 lg:mt-10">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 text-center sm:text-left">Недавно пройденные</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {tests.map((test, index) => {
           const percent = getPercentage(index);
           return (
-            <div key={index} className="bg-gray-100 p-4 rounded-xl">
-              <p className="text-sm border px-2 py-1 rounded-full w-max border-green-400 text-green-600">
+            <div key={index} className="bg-gray-100 p-3 sm:p-4 rounded-xl">
+              <p className="text-xs sm:text-sm border px-2 py-1 rounded-full w-max border-green-400 text-green-600">
                 тест №{index + 1}
               </p>
-              <p className="mt-2">пройдено {percent ?? 0}%</p>
+              <p className="text-sm sm:text-base mt-2">пройдено {percent ?? 0}%</p>
             </div>
           );
         })}
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">Все</h2>
+      <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center sm:text-left">Все</h2>
       <div className="space-y-4">
         {tests.map((test, index) => (
-          <div key={test.id} className="bg-purple-500 text-white p-5 rounded-2xl flex justify-between items-center">
+          <div key={test.id} className="bg-purple-500 text-white p-3 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-center">
             <div>
-              <p className="text-lg font-semibold">{test.title}</p>
+              <p className="text-base sm:text-lg font-semibold">{test.title}</p>
               <p className="text-xs mt-1">ОТ НАС</p>
             </div>
             <button
               onClick={() => router.push(`/quiz/${test.id}`)}
-              className="bg-black text-white px-4 py-2 rounded-xl"
+              className="bg-black text-white px-3 sm:px-4 py-2 rounded-xl mt-2 sm:mt-0 text-sm sm:text-base"
             >
               пройти
             </button>

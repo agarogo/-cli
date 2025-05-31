@@ -77,7 +77,7 @@ export default function Quiz() {
                 }));
 
                 questionsRef.current = shuffled;
-                setQuestionsLoaded(true); // ✅ Триггер рендера после загрузки
+                setQuestionsLoaded(true);
             } catch {
                 setError("Ошибка загрузки вопросов");
             }
@@ -129,33 +129,33 @@ export default function Quiz() {
     const questions = questionsRef.current;
 
     if (isLoading || !questionsLoaded || !questions)
-        return <div className="text-center mt-20">Загрузка...</div>;
+        return <div className="text-center mt-20 text-sm sm:text-base">Загрузка...</div>;
     if (!isAuthenticated || !testConfig)
         return (
-            <div className="text-center text-red-500 mt-20">
+            <div className="text-center text-red-500 mt-20 text-sm sm:text-base">
                 Некорректный маршрут теста
             </div>
         );
     if (error)
-        return <div className="text-red-500 text-center mt-20">{error}</div>;
+        return <div className="text-red-500 text-center mt-20 text-sm sm:text-base">{error}</div>;
 
     const currentQuestion = questions[currentQuestionIndex];
 
     return (
-        <section className="mt-28 bg-white w-[90%] mx-auto py-10 px-6 rounded-[32px] shadow-md">
-            <h2 className="text-3xl sm:text-4xl text-center mb-6 font-bold text-[#0A1044]">
+        <section className="container mt-10 sm:mt-20 bg-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 rounded-[32px] shadow-md">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-center mb-4 sm:mb-6 font-bold text-[#0A1044]">
                 Вопрос {currentQuestionIndex + 1} из {questions.length}
             </h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-                <div className="bg-yellow-300 text-[#0A1044] text-lg sm:text-xl p-6 rounded-[20px] shadow">
+            <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+                <div className="bg-yellow-300 text-[#0A1044] text-sm sm:text-base lg:text-lg p-4 sm:p-6 rounded-[20px] shadow">
                     {currentQuestion.question_text}
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                     {currentQuestion.shuffledOptions.map((option, index) => (
                         <button
                             key={index}
                             onClick={() => handleAnswer(option)}
-                            className="block w-full bg-green-300 text-[#0A1044] font-medium text-base sm:text-lg p-4 rounded-[20px] hover:bg-blue-600 hover:text-white transition duration-300 shadow"
+                            className="block w-full bg-green-300 text-[#0A1044] font-medium text-sm sm:text-base p-3 sm:p-4 rounded-[20px] hover:bg-blue-600 hover:text-white transition duration-300 shadow"
                         >
                             {option}
                         </button>
