@@ -20,5 +20,4 @@ const useAuthRedirect = () => {
 
     return { isAuthenticated, isLoading };
 };
-
 export default useAuthRedirect;
